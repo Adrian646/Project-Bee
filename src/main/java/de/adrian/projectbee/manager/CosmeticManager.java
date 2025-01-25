@@ -3,6 +3,7 @@ package de.adrian.projectbee.manager;
 import cn.nukkit.Player;
 import cn.nukkit.entity.data.IntEntityData;
 import de.adrian.projectbee.ProjectBee;
+import de.adrian.projectbee.command.CosmeticsCommand;
 import de.adrian.projectbee.command.GiveCosmeticCommand;
 import de.adrian.projectbee.command.ShopCommand;
 import de.adrian.projectbee.data.cosmetic.Cosmetic;
@@ -20,7 +21,8 @@ public class CosmeticManager {
     public void registerCommands() {
         this.PLUGIN.registerCommands(
                 new GiveCosmeticCommand(this.PLUGIN),
-                new ShopCommand(this.PLUGIN)
+                new ShopCommand(this.PLUGIN),
+                new CosmeticsCommand(this.PLUGIN)
         );
     }
 
@@ -44,5 +46,22 @@ public class CosmeticManager {
 
     public List<CosmeticType> getAllCosmeticTypes() {
         return Arrays.asList(CosmeticType.values());
+    }
+
+    public List<Cosmetic> getCosmeticsSortedByOwnership(Player player) {
+        List<Cosmetic> sortedCosmetics = getAllCosmetics();
+
+        sortedCosmetics.sort((cosmetic1, cosmetic2) -> {
+            boolean isOwningCosmetic1 = PLUGIN.getPlayerManager().getPlayer(player.getUniqueId()).hasCosmetic(cosmetic1);
+            boolean isOwningCosmetic2 = PLUGIN.getPlayerManager().getPlayer(player.getUniqueId()).hasCosmetic(cosmetic2);
+
+            if (isOwningCosmetic1 && !isOwningCosmetic2) {
+                return -1;
+            } else if (!isOwningCosmetic1 && isOwningCosmetic2) {
+                return 1;
+            }
+            return 0;
+        });
+        return sortedCosmetics;
     }
 }

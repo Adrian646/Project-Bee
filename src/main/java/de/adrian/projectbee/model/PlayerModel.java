@@ -74,6 +74,10 @@ public class PlayerModel {
         cosmetics.forEach(cosmetic1 -> System.out.println(cosmetic1.toString()));
     }
 
+    public boolean hasCosmetic(Cosmetic cosmetic) {
+        return this.cosmetics.contains(cosmetic);
+    }
+
     public void removeCosmetic(Cosmetic cosmetic) {
         this.cosmetics.remove(cosmetic);
     }

@@ -25,6 +25,11 @@ public enum Messages {
     SHOP_COSMETIC_FORM_CONTENT("You can use coins to buy Cosmetics. Click on a category below to see what we have to offer."),
     SHOP_COSMETIC_FORM_BUTTON("§n{0}§r\n§8{1}"),
 
+    VIEW_COSMETIC_FORM_TITLE("Cosmetics"),
+    VIEW_COSMETIC_FORM_CONTENT("Cosmetic View form content."),
+    VIEW_COSMETIC_OWNED_FORM_BUTTON("§n{0}§r §i[{1}]\n§jOwned"),
+    VIEW_COSMETIC_UNOWNED_FORM_BUTTON("§n{0} §i[{1}]§r\n§hUnowned"),
+
     //Category Descriptions
     HAT_DESCRIPTION("A stylish accessory to wear on your head."),
     BACKBLING_DESCRIPTION("A unique item worn on your back."),
