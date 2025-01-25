@@ -7,6 +7,7 @@ import cn.nukkit.event.server.DataPacketReceiveEvent;
 import cn.nukkit.network.protocol.InteractPacket;
 import cn.nukkit.network.protocol.PlayerAuthInputPacket;
 import cn.nukkit.network.protocol.types.AuthInputAction;
+import de.adrian.projectbee.ProjectBee;
 import de.adrian.projectbee.entities.MountableEntity;
 
 public class PacketListener implements Listener {
@@ -61,7 +62,7 @@ public class PacketListener implements Listener {
         if (event.getPacket() instanceof InteractPacket pk && pk.action == 3) {
             MountableEntity entity = MountableEntity.playerEntityMap.get(player.getUniqueId());
             if (entity != null) {
-                entity.despawnMount();
+                ProjectBee.getProjectBee().getCosmeticManager().deactivateCosmetic(player);
             }
         }
     }

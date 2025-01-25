@@ -1,8 +1,10 @@
 package de.adrian.projectbee.form.cosmetic.view;
 
 import cn.nukkit.Player;
+import cn.nukkit.form.response.FormResponseSimple;
 import cn.nukkit.form.window.FormWindowSimple;
 import de.adrian.projectbee.ProjectBee;
+import de.adrian.projectbee.data.cosmetic.Cosmetic;
 import de.adrian.projectbee.data.messages.Messages;
 import de.adrian.projectbee.model.PlayerModel;
 import de.adrian.projectbee.utils.form.BaseSimpleForm;
@@ -35,5 +37,19 @@ public class CosmeticViewForm extends BaseSimpleForm {
         addButtons(formWindowSimple, buttonLabels);
 
         player.showFormWindow(formWindowSimple);
+
+        formWindowSimple.addHandler((player1, i) -> {
+            FormResponseSimple responseSimple = formWindowSimple.getResponse();
+            if (!formWindowSimple.wasClosed()) {
+                int clickedButtonId = responseSimple.getClickedButtonId();
+                Cosmetic clickedCosmetic = PLUGIN.getCosmeticManager()
+                        .getCosmeticsSortedByOwnership(player)
+                        .stream()
+                        .toList()
+                        .get(clickedButtonId);
+
+                PLUGIN.getCosmeticManager().handleClickedCosmetic(player, clickedCosmetic);
+            }
+        });
     }
 }

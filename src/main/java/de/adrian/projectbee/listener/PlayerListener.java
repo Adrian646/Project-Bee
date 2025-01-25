@@ -25,9 +25,6 @@ public class PlayerListener implements Listener {
         if (playerModel == null) {
             playerModel = new PlayerModel(uuid, 1, 0, 0, null, new HashSet<>());
             playerManager.registerPlayer(playerModel);
-            player.sendMessage("Registered");
-        } else {
-            player.sendMessage("Already Exist");
         }
 
         CurrencyScoreboard currencyScoreboard = new CurrencyScoreboard(player);

@@ -4,7 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.form.response.FormResponseSimple;
 import cn.nukkit.form.window.FormWindowSimple;
 import de.adrian.projectbee.ProjectBee;
-import de.adrian.projectbee.data.cosmetic.CosmeticType;
+import de.adrian.projectbee.data.cosmetic.type.CosmeticType;
 import de.adrian.projectbee.data.messages.Messages;
 import de.adrian.projectbee.utils.form.BaseSimpleForm;
 import lombok.RequiredArgsConstructor;

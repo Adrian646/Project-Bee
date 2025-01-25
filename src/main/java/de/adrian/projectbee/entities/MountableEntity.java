@@ -41,5 +41,4 @@ public abstract class MountableEntity extends Entity implements CustomEntity {
         owner.sendData(owner);
         this.close();
     }
-
 }

@@ -1,4 +1,4 @@
-package de.adrian.projectbee.data.cosmetic;
+package de.adrian.projectbee.data.cosmetic.type;
 
 import de.adrian.projectbee.data.messages.Messages;
 import lombok.AllArgsConstructor;

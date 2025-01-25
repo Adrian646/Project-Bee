@@ -6,7 +6,8 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
 import de.adrian.projectbee.command.DebugCommand;
 import de.adrian.projectbee.data.cosmetic.Cosmetic;
-import de.adrian.projectbee.data.cosmetic.CosmeticType;
+import de.adrian.projectbee.data.cosmetic.MountableCosmetic;
+import de.adrian.projectbee.data.cosmetic.type.CosmeticType;
 import de.adrian.projectbee.entities.mounts.UfoEntity;
 import de.adrian.projectbee.listener.BlockListener;
 import de.adrian.projectbee.listener.PacketListener;
@@ -89,7 +90,7 @@ public class ProjectBee extends PluginBase {
         cosmeticManager.registerCosmetic(new Cosmetic(1, "Graduation Hat", 100, CosmeticType.HAT));
         cosmeticManager.registerCosmetic(new Cosmetic(2, "Irish Hat", 100, CosmeticType.HAT));
         cosmeticManager.registerCosmetic(new Cosmetic(3, "Wand", 100, CosmeticType.BACKBLING));
-        cosmeticManager.registerCosmetic(new Cosmetic(999, "Ufo", 100, CosmeticType.MOUNT));
+        cosmeticManager.registerCosmetic(new MountableCosmetic(999, "Ufo", 100, CosmeticType.MOUNT, UfoEntity.IDENTIFIER));
     }
 
     private void handleEntities() {

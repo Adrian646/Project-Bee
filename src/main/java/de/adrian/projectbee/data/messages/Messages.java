@@ -23,7 +23,7 @@ public enum Messages {
 
     SHOP_COSMETIC_FORM_TITLE("Buy Cosmetics"),
     SHOP_COSMETIC_FORM_CONTENT("You can use coins to buy Cosmetics. Click on a category below to see what we have to offer."),
-    SHOP_COSMETIC_FORM_BUTTON("§n{0}§r\n§8{1}"),
+    SHOP_COSMETIC_FORM_BUTTON("§n{0}"),
 
     VIEW_COSMETIC_FORM_TITLE("Cosmetics"),
     VIEW_COSMETIC_FORM_CONTENT("Cosmetic View form content."),
@@ -39,7 +39,11 @@ public enum Messages {
     SUCCESSFULLY_PURCHASED("§nYou successfully purchased §j{0}§n!"),
     SUCCESSFULLY_GIVEN_COSMETIC("§nYou successfully given §j{0}§n to §j{1}§n!"),
     COSMETIC_GIVING_CANCELLED("§hThe process has been cancelled."),
-    NOT_ENOUGH_MONEY("§hYou dont have enough money to buy §j{0}§h!"),
+    NOT_ENOUGH_MONEY("§hYou dont have enough coins to buy §j{0}§h!"),
+    YOU_DONT_OWN_COSMETIC("§nYou dont own §j{0}§n. §nType §j/shop§n to buy it."),
+    ERROR_WHILE_CREATING_MOUNT("§hAn error occurred while spawning your mount. Please report this to the support at §nhelp.example.net"),
+    SUCCESSFULLY_ACTIVATED_COSMETIC("§nYou successfully §jactivated §n{0}!"),
+    SUCCESSFULLY_DEACTIVATED_COSMETIC("§nYou successfully §hdeactivated §n{0}!"),
 
     //Form Buttons
     YES("YES"),

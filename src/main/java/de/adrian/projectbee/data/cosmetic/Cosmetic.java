@@ -1,5 +1,6 @@
 package de.adrian.projectbee.data.cosmetic;
 
+import de.adrian.projectbee.data.cosmetic.type.CosmeticType;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 

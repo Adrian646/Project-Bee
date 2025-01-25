@@ -23,7 +23,5 @@ public class BlockListener implements Listener {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
         PLUGIN.getPlayerManager().getPlayer(uuid).addXP(BlockXP.getXPForBlock(blockId));
-        player.sendMessage("BlockId: " + blockId + " Block Name: " + block.getName() + " XP: " + BlockXP.getXPForBlock(blockId) + " Next Level AT: " + PLUGIN.getPlayerManager().getPlayer(uuid).xpRequiredToLevelUp() + " XP: " + PLUGIN.getPlayerManager().getPlayer(uuid).getXp());
     }
-
 }

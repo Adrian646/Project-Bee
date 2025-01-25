@@ -5,7 +5,7 @@ import cn.nukkit.form.response.FormResponseSimple;
 import cn.nukkit.form.window.FormWindowSimple;
 import de.adrian.projectbee.ProjectBee;
 import de.adrian.projectbee.data.cosmetic.Cosmetic;
-import de.adrian.projectbee.data.cosmetic.CosmeticType;
+import de.adrian.projectbee.data.cosmetic.type.CosmeticType;
 import de.adrian.projectbee.data.messages.Messages;
 import de.adrian.projectbee.manager.PlayerManager;
 import de.adrian.projectbee.model.PlayerModel;
@@ -23,7 +23,7 @@ public class CosmeticShopListForm extends BaseSimpleForm {
 
     @Override
     public void openForm(Player player) {
-        FormWindowSimple formWindowSimple = new FormWindowSimple(Messages.SHOP_COSMETIC_FORM_TITLE.format(), Messages.SHOP_COSMETIC_FORM_CONTENT.format());
+        FormWindowSimple formWindowSimple = new FormWindowSimple(Messages.SHOP_COSMETIC_FORM_TITLE.format(), cosmeticType.getDescription());
 
         List<String> buttonLabels = PLUGIN.getCosmeticManager()
                 .getAllCosmetics()
@@ -52,6 +52,8 @@ public class CosmeticShopListForm extends BaseSimpleForm {
 
                     if (playerModel.getCoins() >= clickedCosmetic.getPrice()) {
                         playerManager.addPlayerCosmetic(player.getUniqueId(), clickedCosmetic);
+                        playerModel.setCoins(playerModel.getCoins() - clickedCosmetic.getPrice());
+                        playerModel.getCurrencyScoreboard().updateTitle();
                         player.sendMessage(PLUGIN.getPrefix() + Messages.SUCCESSFULLY_PURCHASED.format(clickedCosmetic.getName()));
                     } else {
                         player.sendMessage(PLUGIN.getPrefix() + Messages.NOT_ENOUGH_MONEY.format(clickedCosmetic.getName()));
