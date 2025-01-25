@@ -1,4 +1,4 @@
-package de.adrian.projectbee.form.cosmetic;
+package de.adrian.projectbee.form.cosmetic.shop;
 
 import cn.nukkit.Player;
 import cn.nukkit.form.response.FormResponseSimple;

@@ -4,7 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import de.adrian.projectbee.ProjectBee;
-import de.adrian.projectbee.form.cosmetic.CosmeticShopTypeForm;
+import de.adrian.projectbee.form.cosmetic.shop.CosmeticShopTypeForm;
 
 public class ShopCommand extends Command {
 
