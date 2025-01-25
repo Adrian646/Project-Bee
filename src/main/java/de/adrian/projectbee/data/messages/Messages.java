@@ -41,6 +41,7 @@ public enum Messages {
     COSMETIC_GIVING_CANCELLED("§hThe process has been cancelled."),
     NOT_ENOUGH_MONEY("§hYou dont have enough coins to buy §j{0}§h!"),
     YOU_DONT_OWN_COSMETIC("§nYou dont own §j{0}§n. §nType §j/shop§n to buy it."),
+    YOU_ALREADY_OWN_COSMETIC("§nYou already own §j{0}§n."),
     ERROR_WHILE_CREATING_MOUNT("§hAn error occurred while spawning your mount. Please report this to the support at §nhelp.example.net"),
     SUCCESSFULLY_ACTIVATED_COSMETIC("§nYou successfully §jactivated §n{0}!"),
     SUCCESSFULLY_DEACTIVATED_COSMETIC("§nYou successfully §hdeactivated §n{0}!"),
