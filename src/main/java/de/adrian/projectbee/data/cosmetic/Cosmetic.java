@@ -1,12 +1,13 @@
 package de.adrian.projectbee.data.cosmetic;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-@Getter
+@Data
 @RequiredArgsConstructor
 public class Cosmetic {
-    private final String id;
+    private final int id;
     private final String name;
-    private final CosmeticType type;
+    private final int price;
+    private final CosmeticType cosmeticType;
 }

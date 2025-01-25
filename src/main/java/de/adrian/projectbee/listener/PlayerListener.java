@@ -7,6 +7,7 @@ import cn.nukkit.event.player.PlayerJoinEvent;
 import de.adrian.projectbee.ProjectBee;
 import de.adrian.projectbee.manager.PlayerManager;
 import de.adrian.projectbee.model.PlayerModel;
+import de.adrian.projectbee.score.CurrencyScoreboard;
 
 import java.util.HashSet;
 import java.util.UUID;
@@ -19,16 +20,19 @@ public class PlayerListener implements Listener {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
 
-        if (playerManager.getPlayer(uuid) == null) {
-            PlayerModel playerModel = new PlayerModel(uuid, 0,0, new HashSet<>());
+        PlayerModel playerModel = playerManager.getPlayer(uuid);
 
+        if (playerModel == null) {
+            playerModel = new PlayerModel(uuid, 1, 0, 0, null, new HashSet<>());
             playerManager.registerPlayer(playerModel);
-
             player.sendMessage("Registered");
         } else {
             player.sendMessage("Already Exist");
         }
 
-    }
+        CurrencyScoreboard currencyScoreboard = new CurrencyScoreboard(player);
+        playerModel.setCurrencyScoreboard(currencyScoreboard);
 
+        currencyScoreboard.updateTitle();
+    }
 }

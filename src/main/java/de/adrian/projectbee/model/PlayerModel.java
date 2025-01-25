@@ -1,5 +1,7 @@
 package de.adrian.projectbee.model;
 
+import de.adrian.projectbee.data.cosmetic.Cosmetic;
+import de.adrian.projectbee.score.CurrencyScoreboard;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,50 +18,63 @@ public class PlayerModel {
     @Getter
     @Setter
     private int xp;
+    @Getter
+    @Setter
+    private int coins;
+    @Getter
+    @Setter
+    private CurrencyScoreboard currencyScoreboard;
 
-    private final Set<String> cosmetics;
+    private final Set<Cosmetic> cosmetics;
 
-    public PlayerModel(UUID uuid, int level, int xp, Set<String> cosmetics) {
+    public PlayerModel(UUID uuid, int level, int xp, int coins, CurrencyScoreboard currencyScoreboard, Set<Cosmetic> cosmetics) {
         this.uuid = uuid;
         this.level = level;
         this.xp = xp;
+        this.coins = coins;
+        this.currencyScoreboard = currencyScoreboard;
         this.cosmetics = cosmetics;
     }
 
     public void addXP(int xp) {
         this.xp += xp;
 
-        if (this.xp >= xpRequiredToLevelUp()) {
+        while (this.xp >= xpRequiredToLevelUp()) {
             levelUp();
         }
     }
 
     public int xpRequiredToLevelUp() {
-        return (level + 1) * (level + 1);
+        if (this.level <= 10) {
+            return (int) (50 * Math.pow(this.level + 1, 1.2));
+        } else {
+            return (int) (100 * Math.pow(this.level, 1.4));
+        }
+    }
+
+    public int coinsRewardForLevelUp() {
+        return (int) (100 * Math.pow(1.1, this.level));
     }
 
     public void levelUp() {
-        int remainingXP = this.xp;
-        int xpRequiredForNextLevel = xpRequiredToLevelUp();
-
-        while (this.xp >= xpRequiredToLevelUp()) {
-            this.level++;
-            this.xp -= xpRequiredToLevelUp();
-            System.out.println("Level: " + level + ", XP: " + xp);
-        }
-
-        if (remainingXP >= xpRequiredForNextLevel) {
-            this.xp = remainingXP - xpRequiredForNextLevel;
-        } else {
-            this.xp = remainingXP;
-        }
+        this.xp -= xpRequiredToLevelUp();
+        this.level++;
+        int reward = coinsRewardForLevelUp();
+        this.coins += coinsRewardForLevelUp();
+        System.out.println("Level Up! New Level: " + this.level + ". Coins Rewarded: " + reward);
+        this.currencyScoreboard.updateTitle();
     }
 
-    public void addCosmetic(String cosmeticId) {
-        this.cosmetics.add(cosmeticId);
+    public double getLevelProgress() {
+        return (double) this.xp / xpRequiredToLevelUp();
     }
 
-    public void removeCosmetic(String cosmeticId) {
-        this.cosmetics.remove(cosmeticId);
+    public void addCosmetic(Cosmetic cosmetic) {
+        this.cosmetics.add(cosmetic);
+        cosmetics.forEach(cosmetic1 -> System.out.println(cosmetic1.toString()));
+    }
+
+    public void removeCosmetic(Cosmetic cosmetic) {
+        this.cosmetics.remove(cosmetic);
     }
 }

@@ -1,6 +1,8 @@
 package de.adrian.projectbee.manager;
 
 import de.adrian.projectbee.ProjectBee;
+import de.adrian.projectbee.command.SetCoinsCommand;
+import de.adrian.projectbee.data.cosmetic.Cosmetic;
 import de.adrian.projectbee.listener.PlayerListener;
 import de.adrian.projectbee.model.PlayerModel;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,12 @@ public class PlayerManager {
     public void registerListeners() {
         this.PLUGIN.registerListeners(
                 new PlayerListener()
+        );
+    }
+
+    public void registerCommands() {
+        this.PLUGIN.registerCommands(
+                new SetCoinsCommand(this.PLUGIN)
         );
     }
 
@@ -45,17 +53,17 @@ public class PlayerManager {
         }
     }
 
-    public void addPlayerCosmetic(UUID uuid, String cosmeticId) {
+    public void addPlayerCosmetic(UUID uuid, Cosmetic cosmetic) {
         PlayerModel player = players.get(uuid);
         if (player != null) {
-            player.addCosmetic(cosmeticId);
+            player.addCosmetic(cosmetic);
         }
     }
 
-    public void removePlayerCosmetic(UUID uuid, String cosmeticId) {
+    public void removePlayerCosmetic(UUID uuid, Cosmetic cosmetic) {
         PlayerModel player = players.get(uuid);
         if (player != null) {
-            player.removeCosmetic(cosmeticId);
+            player.removeCosmetic(cosmetic);
         }
     }
 

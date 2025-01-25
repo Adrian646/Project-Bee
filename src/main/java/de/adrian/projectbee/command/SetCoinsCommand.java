@@ -9,17 +9,17 @@ import cn.nukkit.command.data.CommandParameter;
 import de.adrian.projectbee.ProjectBee;
 import de.adrian.projectbee.data.messages.Messages;
 
-public class SetLevelCommand extends Command {
+public class SetCoinsCommand extends Command {
 
     private final ProjectBee PLUGIN;
 
-    public SetLevelCommand(ProjectBee plugin) {
-        super("setlevel");
+    public SetCoinsCommand(ProjectBee plugin) {
+        super("setcoins");
         this.setPermission("admin");
         this.setDescription("ADD ME");
         PLUGIN = plugin;
         this.commandParameters.put("default", new CommandParameter[]{new CommandParameter("player", CommandParamType.TARGET, false)});
-        this.setUsage(PLUGIN.getPrefix() + "§c/setlevel [name] [level]");
+        this.setUsage(PLUGIN.getPrefix() + "§c/setcoins [name]");
     }
 
     @Override
@@ -35,17 +35,17 @@ public class SetLevelCommand extends Command {
 
         Player player;
         String name = args[0];
-        String levelString = args[1];
+        String coinsString = args[1];
 
         if ((player = Server.getInstance().getPlayer(name)) != null) {
             try {
-                int level = Integer.parseInt(levelString);
+                int coins = Integer.parseInt(coinsString);
 
-                PLUGIN.getPlayerManager().getPlayer(player.getUniqueId()).setLevel(level);
+                PLUGIN.getPlayerManager().getPlayer(player.getUniqueId()).setCoins(coins);
                 PLUGIN.getPlayerManager().getPlayer(player.getUniqueId()).getCurrencyScoreboard().updateTitle();
-                commandSender.sendMessage(PLUGIN.getPrefix() + Messages.SUCCESSFULLY_SET_LEVEL.format(name, level));
+                commandSender.sendMessage(PLUGIN.getPrefix() + Messages.SUCCESSFULLY_SET_COINS.format(name, coins));
             } catch (Exception e) {
-                commandSender.sendMessage(PLUGIN.getPrefix() + Messages.LEVEL_ARGS_NOT_NUMBER.format());
+                commandSender.sendMessage(PLUGIN.getPrefix() + Messages.COINS_ARGS_NOT_NUMBER.format());
                 return false;
             }
         }

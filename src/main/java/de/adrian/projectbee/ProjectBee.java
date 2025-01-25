@@ -1,11 +1,15 @@
 package de.adrian.projectbee;
 
 import cn.nukkit.command.Command;
+import cn.nukkit.entity.custom.EntityManager;
 import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
+import de.adrian.projectbee.command.DebugCommand;
 import de.adrian.projectbee.data.cosmetic.Cosmetic;
 import de.adrian.projectbee.data.cosmetic.CosmeticType;
+import de.adrian.projectbee.entities.mounts.UfoEntity;
 import de.adrian.projectbee.listener.BlockListener;
+import de.adrian.projectbee.listener.PacketListener;
 import de.adrian.projectbee.manager.CosmeticManager;
 import de.adrian.projectbee.manager.PlayerManager;
 import de.adrian.projectbee.manager.ProgressManager;
@@ -39,26 +43,21 @@ public class ProjectBee extends PluginBase {
 
     @Override
     public void onEnable() {
-        //Commands
         this.cosmeticManager.registerCommands();
         this.progressManager.registerCommands();
 
-        //Listeners
+        this.playerManager.registerCommands();
         this.playerManager.registerListeners();
+
+        this.handleCommands();
 
         this.handleListeners();
 
-        cosmeticManager.registerCosmetic(new Cosmetic("meow1", "Cosmetic1", CosmeticType.HAT));
-        cosmeticManager.registerCosmetic(new Cosmetic("meow2", "Cosmetic2", CosmeticType.WING));
-        cosmeticManager.registerCosmetic(new Cosmetic("meow3", "Cosmetic3", CosmeticType.EMOTE));
+        this.handleCosmetics();
+
+        this.handleEntities();
 
         this.getLogger().info(this.getFullName() + " loaded.");
-    }
-
-    private void handleListeners() {
-        this.registerListeners(
-                new BlockListener(this)
-        );
     }
 
     public void registerCommands(Command... commands) {
@@ -73,8 +72,28 @@ public class ProjectBee extends PluginBase {
         }
     }
 
-    private void registerCosmetics() {
+    private void handleCommands() {
+        this.registerCommands(
+                new DebugCommand(this)
+        );
+    }
 
+    private void handleListeners() {
+        this.registerListeners(
+                new BlockListener(this),
+                new PacketListener()
+        );
+    }
+
+    private void handleCosmetics() {
+        cosmeticManager.registerCosmetic(new Cosmetic(1, "Graduation Hat", 100, CosmeticType.HAT));
+        cosmeticManager.registerCosmetic(new Cosmetic(2, "Irish Hat", 100, CosmeticType.HAT));
+        cosmeticManager.registerCosmetic(new Cosmetic(3, "Wand", 100, CosmeticType.BACKBLING));
+        cosmeticManager.registerCosmetic(new Cosmetic(999, "Ufo", 100, CosmeticType.MOUNT));
+    }
+
+    private void handleEntities() {
+        EntityManager.get().registerDefinition(UfoEntity.DEFINITION);
     }
 
     @Override

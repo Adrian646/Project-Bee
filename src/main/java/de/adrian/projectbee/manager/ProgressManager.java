@@ -12,8 +12,8 @@ public class ProgressManager {
 
     public void registerCommands() {
         this.PLUGIN.registerCommands(
-                new SetLevelCommand(this.PLUGIN),
-                new ShowProgressCommand(this.PLUGIN)
+                new SetLevelCommand(PLUGIN),
+                new ShowProgressCommand(PLUGIN)
         );
     }
 

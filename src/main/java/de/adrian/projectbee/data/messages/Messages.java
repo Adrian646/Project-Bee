@@ -5,26 +5,42 @@ import java.text.MessageFormat;
 public enum Messages {
 
     //Level
-    SUCCESSFULLY_SET_LEVEL("§eYou successfully set the level of player §6{0} §eto §6{1}"),
-    LEVEL_ARGS_NOT_NUMBER("§cLevel must be a number!"),
+    SUCCESSFULLY_SET_LEVEL("§nYou successfully set the level of player §j{0} §nto §j{1}"),
+    LEVEL_ARGS_NOT_NUMBER("§hLevel must be a number!"),
+
+    //Coins
+    SUCCESSFULLY_SET_COINS("§nYou successfully set the coins of player §j{0} §nto §j{1}"),
+    COINS_ARGS_NOT_NUMBER("§hCoins must be a number!"),
 
     //Form Messages
-    PROGRESS_FORM_TITLE("§eYour Progress"),
-    PROGRESS_FORM_CONTENT("§eYour Current Level §r§8» §6{0}\n§eCurrent XP §r§8» §6{1}"),
+    PROGRESS_FORM_TITLE("§nYour Progress"),
+    PROGRESS_FORM_CONTENT("§nYour Current Level §r§8» §j{0}\n§nCurrent XP §r§8» §j{2}"),
 
-    GIVE_COSMETIC_FORM_TITLE("§eGive Cosmetics"),
-    GIVE_COSMETIC_FORM_COSMETIC_DROPDOWN_TITLE("Which cosmetic do you want to give the User"),
-    GIVE_COSMETIC_FORM_2(""),
+    GIVE_COSMETIC_FORM_TITLE("Give Cosmetics"),
+    GIVE_COSMETIC_TYPE_FORM_CONTENT("Which type of cosmetic do you want to give the Player?"),
+    GIVE_COSMETIC_ACCEPT_FORM_CONTENT("Are you really sure you want to give {0} to {1}?"),
+    GIVE_COSMETIC_FORM_BUTTON("{0} ({1})"),
+
+    SHOP_COSMETIC_FORM_TITLE("Buy Cosmetics"),
+    SHOP_COSMETIC_FORM_CONTENT("You can use coins to buy Cosmetics. Click on a category below to see what we have to offer."),
+    SHOP_COSMETIC_FORM_BUTTON("§n{0}§r\n§8{1}"),
+
+    //Category Descriptions
+    HAT_DESCRIPTION("A stylish accessory to wear on your head."),
+    BACKBLING_DESCRIPTION("A unique item worn on your back."),
+    MOUNT_DESCRIPTION("A rideable companion to travel in style."),
+
+    //Messages
+    SUCCESSFULLY_PURCHASED("§nYou successfully purchased §j{0}§n!"),
+    SUCCESSFULLY_GIVEN_COSMETIC("§nYou successfully given §j{0}§n to §j{1}§n!"),
+    COSMETIC_GIVING_CANCELLED("§hThe process has been cancelled."),
+    NOT_ENOUGH_MONEY("§hYou dont have enough money to buy §j{0}§h!"),
 
     //Form Buttons
-    CLOSE("Close"),
     YES("YES"),
     NO("NO"),
-    ACCEPT("Accept"),
-    DECLINE("Decline"),
-    OK("Ok"),
 
-    END("END");
+    END("This is just for me to not add a semicolon or move it when i wanna add something new :(");
 
     private final String message;
 

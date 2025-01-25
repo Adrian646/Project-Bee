@@ -8,16 +8,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum BlockXP {
 
-    DIAMOND_ORE(BlockID.DIAMOND_ORE, 10),
-    ANCIENT_DEBRIS(BlockID.ANCIENT_DEBRIS, 12),
-    EMERALD_ORE(BlockID.EMERALD_ORE, 5),
-    GOLD_ORE(BlockID.GOLD_ORE, 5),
-    LAPIS_ORE(BlockID.LAPIS_ORE, 3),
-    REDSTONE_ORE(BlockID.REDSTONE_ORE, 2),
+    DIAMOND_ORE(BlockID.DIAMOND_ORE, 15),
+    ANCIENT_DEBRIS(BlockID.ANCIENT_DEBRIS, 20),
+    EMERALD_ORE(BlockID.EMERALD_ORE, 12),
+    GOLD_ORE(BlockID.GOLD_ORE, 6),
+    LAPIS_ORE(BlockID.LAPIS_ORE, 5),
+    REDSTONE_ORE(BlockID.REDSTONE_ORE, 4),
     COAL_ORE(BlockID.COAL_ORE, 1),
     COPPER_ORE(BlockID.COPPER_ORE, 2),
-    NETHER_GOLD_ORE(BlockID.NETHER_GOLD_ORE, 4),
-    NETHER_QUARZ_ORE(BlockID.QUARTZ_ORE, 3);
+    NETHER_GOLD_ORE(BlockID.NETHER_GOLD_ORE, 6),
+    NETHER_QUARZ_ORE(BlockID.QUARTZ_ORE, 4);
 
     private final int blockId;
     private final int xp;
